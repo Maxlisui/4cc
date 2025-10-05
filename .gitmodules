@@ -10,3 +10,6 @@
 [submodule "code/custom/--name4coder_fleury"]
 	path = code/custom/--name4coder_fleury
 	url = https://github.com/Jack-Punter/4coder_punter.git
+[submodule "code/custom/4coder_maxlisui/4coder_vim"]
+	path = code/custom/4coder_maxlisui/4coder_vim
+	url = https://github.com/B-Y-P/4coder_vim.git

@@ -438,6 +438,7 @@ api(custom)
 struct Marker{
     i64 pos;
     b32 lean_right;
+    i32 line;
 };
 
 api(custom)

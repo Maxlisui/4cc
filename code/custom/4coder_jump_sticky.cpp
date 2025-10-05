@@ -150,6 +150,7 @@ init_marker_list(Application_Links *app, Heap *heap, Buffer_ID buffer, Marker_Li
             for (i32 k = range.first; k < range.one_past_last; k += 1){
                 markers[marker_index].pos = jumps.jumps[k].jump_pos;
                 markers[marker_index].lean_right = false;
+                markers[marker_index].line = i32(jumps.jumps[k].list_line);
                 stored[k].list_line        = jumps.jumps[k].list_line;
                 stored[k].list_colon_index = jumps.jumps[k].list_colon_index;
                 stored[k].is_sub_error     = jumps.jumps[k].is_sub_error;

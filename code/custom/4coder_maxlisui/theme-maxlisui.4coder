@@ -1,0 +1,87 @@
+defcolor_back = 0xff1d2021;
+defcolor_margin = 0xFF181818;
+defcolor_margin_hover = 0xFF252525;
+defcolor_margin_active = 0xFF323232;
+defcolor_list_item = {defcolor_margin, defcolor_back};
+defcolor_list_item_hover = {defcolor_margin_hover, defcolor_margin};
+defcolor_list_item_active = {defcolor_margin_active, defcolor_margin_active};
+defcolor_cursor = {0xFF00EE00, 0xFFEE7700};
+defcolor_at_cursor = defcolor_back;
+defcolor_highlight_cursor_line = 0xFF1E1E1E;
+defcolor_highlight = 0xFFDDEE00;
+defcolor_mark = 0xFF494949;
+defcolor_text_default = 0xff83a598;
+defcolor_at_highlight = 0xFFFF44DD;
+defcolor_comment = 0xff928374;
+defcolor_comment_pop = {0xFF00A000, 0xFFA00000};
+defcolor_keyword = 0xfffb4934;
+defcolor_str_constant = 0xffb8bb26;
+defcolor_char_constant = defcolor_str_constant;
+defcolor_int_constant = 0xffd3869b;
+defcolor_float_constant = defcolor_int_constant;
+defcolor_bool_constant = defcolor_int_constant;
+defcolor_include = defcolor_str_constant;
+defcolor_preproc = 0xff8ec07c;
+defcolor_special_character = 0xFFFF0000;
+defcolor_ghost_character = 0xFF4E5E46;
+
+defcolor_paste = 0xFFDDEE00;
+
+defcolor_undo = 0xFF00DDEE;
+
+defcolor_highlight_junk = 0xff3a0000;
+defcolor_highlight_white = 0xff003a3a;
+
+defcolor_bar = 0xfff9f5d7;
+defcolor_bar_active = 0xff504945;
+defcolor_base = 0xFF000000;
+defcolor_pop1 = 0xFF3C57DC;
+defcolor_pop2 = 0xFFFF0000;
+
+defcolor_back_cycle = {0x10A00000, 0x0C00A000, 0x0C0000A0, 0x0CA0A000};
+defcolor_text_cycle = {0xFFA00000, 0xFF00A000, 0xFF0030B0, 0xFFA0A000};
+
+defcolor_line_numbers_back = 0xFF101010;
+defcolor_line_numbers_text = 0xFF404040;
+
+/// BYP Colors
+defcolor_function                   =  0xFFB8BB26;
+defcolor_type                       =  0xFFFABD2F;
+defcolor_primitive                  =  defcolor_keyword;
+defcolor_macro                      =  0xFF8EC07C;
+defcolor_control                    =  defcolor_preproc;
+defcolor_struct                     =  defcolor_keyword;
+defcolor_non_text                   =  0xFF504945;
+
+/// Vim Colors
+defcolor_vim_filebar_pop            =  0xFFB8BB26;
+defcolor_vim_chord_text             =  defcolor_text_default;
+defcolor_vim_chord_unresolved       =  defcolor_mark;
+defcolor_vim_chord_error            =  defcolor_special_character;
+
+/// Fleury Colors
+fleury_color_syntax_crap           = defcolor_non_text;
+fleury_color_operators             = defcolor_non_text;
+fleury_color_inactive_pane_overlay = 0x44000000;
+fleury_color_inactive_pane_background = 0xff000000;
+fleury_color_file_progress_bar     = 0x608A4CDB;
+fleury_color_brace_highlight       = { defcolor_preproc };
+fleury_color_brace_line            = { 0x809ba290 };
+fleury_color_brace_annotation      = { 0x809ba290 };
+fleury_color_index_product_type    = defcolor_type;
+fleury_color_index_sum_type        = defcolor_type;
+fleury_color_index_function        = defcolor_function;
+fleury_color_index_macro           = defcolor_macro;
+fleury_color_index_constant        = defcolor_macro;
+fleury_color_index_comment_tag     = 0xffff0000;
+fleury_color_index_decl            = 0xFF2299FF;
+fleury_color_cursor_macro          = defcolor_bar;
+fleury_color_cursor_power_mode     = defcolor_bar;
+fleury_color_cursor_inactive       = 0xFF8E2DE2;
+fleury_color_plot_cycle            = { 0xff03d3fc, 0xff22b80b, 0xfff0bb0c, 0xfff0500c };
+fleury_color_token_highlight       = defcolor_margin_hover;
+fleury_color_token_minor_highlight = defcolor_bar;
+fleury_color_error_annotation      = 0xffff0000;
+fleury_color_lego_grab             = 0xffefaf6f;
+fleury_color_lego_splat            = 0xffefaaef;
+fleury_color_comment_user_name     = defcolor_keyword;
