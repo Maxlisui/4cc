@@ -53,6 +53,7 @@ struct Compilation
     char* app_target_out;
     char* platform_layer;
     char* platform_layer_out;
+    char* custom_layer_dir;
     char* custom_layer;
     char* custom_layer_out;
     
@@ -391,6 +392,17 @@ build_main(Arena *arena, const Project* project, b32 update_local_assets)
 		
 		printf("\n*-*-* Copying all from: %s  to: %s *-*-*\n", ship_files_folder, build_folder);
 		fm_copy_all(ship_files_folder, build_folder);
+		
+		if (project->compilation.custom_layer_dir != nullptr)
+		{
+			char* source_config_file = fm_str(arena, project->compilation.custom_layer_dir, "config.4coder");
+			if (fm_exists_file(source_config_file))
+			{
+				char* target_config_file = fm_str(arena, build_folder, SLASH, "config.4coder");
+				printf("\n*-*-* Copying custom config file from: %s  to: %s *-*-*\n", source_config_file, target_config_file);
+				fm_copy_file(source_config_file, target_config_file);
+			}
+		}
 	}
 	
 	// Clean up temporary files (windows...)
@@ -535,10 +547,22 @@ int main(int argc, char **argv){
 	compilation.platform_layer_out = fm_str(&arena, layout.build_path, SLASH, "4ed" EXE);
     
 	char* custom_target                    = get_custom_target(argc, argv);
-	compilation.was_custom_layer_specified = custom_target != nullptr;
-	compilation.custom_layer               = compilation.was_custom_layer_specified ? fm_str(&arena, layout.custom_layer_path, SLASH, custom_target, SLASH, custom_target, ".cpp") : fm_str(&arena, layout.custom_layer_path, SLASH, "4coder_default_bindings.cpp");
+	
+	if (custom_target != nullptr)
+	{
+		compilation.was_custom_layer_specified = true;
+		compilation.custom_layer_dir = fm_str(&arena, layout.custom_layer_path, SLASH, custom_target, SLASH);
+		compilation.custom_layer = fm_str(&arena, compilation.custom_layer_dir, custom_target, ".cpp");
+	}
+	else
+	{
+		compilation.was_custom_layer_specified = false;
+		compilation.custom_layer_dir = nullptr;
+		compilation.custom_layer = fm_str(&arena, layout.custom_layer_path, SLASH, "4coder_default_bindings.cpp");
+	}
+	
 	compilation.custom_layer_out           = fm_str(&arena, layout.build_path, SLASH, "custom_4coder" DLL);
-    
+
 	compilation.compiler_options     = (char*)compiler_flags;
 	compilation.debug_options        = (char*)debug_flags;
 	compilation.optimization_options = (char*)optimization_flags;

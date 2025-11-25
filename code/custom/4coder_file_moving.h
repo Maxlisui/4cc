@@ -281,6 +281,18 @@ fm__show_details_for_zip_output(void){
 #define FILE_ATTRIBUTE_TEMPORARY         0x00000100*/
 
 #include <windows.h>
+
+#ifdef OS_WINDOWS
+#undef OS_WINDOWS
+#endif
+
+#include <shlwapi.h>
+
+#ifdef OS_WINDOWS
+#undef OS_WINDOWS
+#define OS_WINDOWS 1
+#endif
+
 global u64 perf_frequency;
 
 internal Arena

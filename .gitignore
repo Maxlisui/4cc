@@ -4,3 +4,5 @@ distributions/
 4ed_build
 4ed_build.exe
 ./code/custom/metadata_generator
+*.obj
+code/custom/metadata_generator.exe

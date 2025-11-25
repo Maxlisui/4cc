@@ -9,7 +9,7 @@ By compiling the 4ed_build.cpp file in the root directory and running the result
 ## Compile
 ### Windows
 
-	cl /Icode\custom 4ed_build.cpp /Fe4ed_build
+	cl /Icode\custom 4ed_build.cpp /Fe4ed_build Shlwapi.lib
    
 ### Linux
 1. Get required libraries (apt names)
