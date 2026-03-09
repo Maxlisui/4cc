@@ -216,18 +216,31 @@ build_language_model(void){
   sm_key("Unsigned");
   sm_key("Signed");
 
-  sm_key("uint8_t");
-  sm_key("uint16_t");
-  sm_key("uint32_t");
-  sm_key("uint64_t");
+  sm_key("Uint8T", "uint8_t");
+  sm_key("Uint16T", "uint16_t");
+  sm_key("Uint32T", "uint32_t");
+  sm_key("Uint64T", "uint64_t");
 
-  sm_key("int8_t");
-  sm_key("int16_t");
-  sm_key("int32_t");
-  sm_key("int64_t");
+  sm_key("Int8T", "int8_t");
+  sm_key("Int16T", "int16_t");
+  sm_key("Int32T", "int32_t");
+  sm_key("Int64T", "int64_t");
+  
+  sm_key("SizeT", "SizeT");
+  sm_key("PtrDiffT", "PtrDiffT");
+  
+  sm_key("S8");
+  sm_key("S16");
+  sm_key("S32");
+  sm_key("S64");
 
-  sm_key("size_t");
-  sm_key("ptrdiff_t");
+  sm_key("U8");
+  sm_key("U16");
+  sm_key("U32");
+  sm_key("U64");
+  
+  sm_key("F32");
+  sm_key("F64");
 
   // Anything that requires ';' when closing scope (e.g. struct{...}; )
   sm_select_base_kind(maxlisui_TokenKind_Struct);
