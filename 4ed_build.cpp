@@ -55,6 +55,7 @@ struct Compilation
     char* platform_layer_out;
     char* custom_layer_dir;
     char* custom_layer;
+    char* custom_languages;
     char* custom_layer_out;
     
     char* compiler_options;
@@ -380,7 +381,11 @@ build_main(Arena *arena, const Project* project, b32 update_local_assets)
 	char* cpp_lexer_gen_exe = fm_str(arena, project->layout.build_path, SLASH, cpp_lexer_gen, EXE);
 	if (!fm_exists_file(cpp_lexer_gen_exe))
 	{
-		char* cpp_lexer_gen_cpp = fm_str(arena, project->layout.languages_path, SLASH, cpp_lexer_gen, CPP);
+		char* cpp_lexer_gen_cpp = project->compilation.custom_languages;
+		if (!fm_exists_file(cpp_lexer_gen_cpp))
+		{
+			cpp_lexer_gen_cpp = fm_str(arena, project->layout.languages_path, SLASH, cpp_lexer_gen, CPP);
+		}
 		build_file(project, cpp_lexer_gen_cpp, cpp_lexer_gen_exe);
 		run_file(cpp_lexer_gen_exe);
 	}
@@ -553,12 +558,14 @@ int main(int argc, char **argv){
 		compilation.was_custom_layer_specified = true;
 		compilation.custom_layer_dir = fm_str(&arena, layout.custom_layer_path, SLASH, custom_target, SLASH);
 		compilation.custom_layer = fm_str(&arena, compilation.custom_layer_dir, custom_target, ".cpp");
+		compilation.custom_languages = fm_str(&arena, compilation.custom_layer_dir, custom_target, "_cpp_lexer_gen.cpp");
 	}
 	else
 	{
 		compilation.was_custom_layer_specified = false;
 		compilation.custom_layer_dir = nullptr;
 		compilation.custom_layer = fm_str(&arena, layout.custom_layer_path, SLASH, "4coder_default_bindings.cpp");
+		compilation.custom_languages = nullptr;
 	}
 	
 	compilation.custom_layer_out           = fm_str(&arena, layout.build_path, SLASH, "custom_4coder" DLL);
