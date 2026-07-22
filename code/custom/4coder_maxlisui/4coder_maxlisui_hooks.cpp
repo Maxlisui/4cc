@@ -252,7 +252,6 @@ maxlisui_buffer_region(Application_Links *app, View_ID view_id, Rect_f32 region)
 }
 
 BUFFER_HOOK_SIG(maxlisui_file_save){
-#if 0
   b32 auto_indent = def_get_config_b32(vars_save_string_lit("automatically_indent_text_on_save"));
   b32 is_virtual = def_get_config_b32(vars_save_string_lit("enable_virtual_whitespace"));
   if (auto_indent && is_virtual){
@@ -273,7 +272,6 @@ BUFFER_HOOK_SIG(maxlisui_file_save){
     Color_Table color_table = make_color_table(app, &global_theme_arena);
     Config *config = theme_parse__buffer(app, scratch, buffer_id, &global_theme_arena, &color_table);
     String_Const_u8 error_text = config_stringize_errors(app, scratch, config);
-    comp_error(app, error_text);
 
     if (error_text.size > 0){
       print_message(app, error_text);
@@ -295,7 +293,6 @@ BUFFER_HOOK_SIG(maxlisui_file_save){
     view_enqueue_command_function(app, view, maxlisui_reload_project);
   }
 
-#endif
   return 0;
 }
 
