@@ -316,7 +316,7 @@ build_binary(const Project* project)
 	if (!compilation->was_custom_layer_specified || !fm_exists_file(compilation->platform_layer_out))
 	{
 		printf("\n*-*-* Build the 4ed binary (%s -> %s) *-*-*\n", compilation->platform_layer, compilation->platform_layer_out);
-		systemf("%s %s %s %s %s%s %s%s %s %s   %s %s %s %s %s%s",
+		systemf("%s %s %s %s %s%s %s%s %s %s   %s %s %s %s %s %s",
 				compilation->compiler,
 				compilation->arch_options,
 				compilation->compiler_options,
@@ -326,11 +326,11 @@ build_binary(const Project* project)
 				HasFlag(compilation->flags, DEBUG_INFO) ? compilation->debug_options : "",
 				HasFlag(compilation->flags, OPTIMIZATION) ? compilation->optimization_options : "",
 				compilation->bin_includes,
-				compilation->library,
-				compilation->icon,
 				compilation->platform_layer,
 				OUT_FLAG,
-				compilation->platform_layer_out
+				compilation->platform_layer_out,
+				compilation->library,
+				compilation->icon
 				);
 		
 		ExitIfError(error_state);
@@ -344,7 +344,7 @@ build_file(const Project* project, char* file_path, char* file_out_path)
     const Compilation* compilation = &project->compilation;
     
     printf("\n*-*-* Building file %s: output %s *-*-\n", file_path, file_out_path);
-	systemf("%s %s %s %s %s%s %s%s %s %s   %s %s %s %s %s%s",
+	systemf("%s %s %s %s %s%s %s%s %s %s   %s %s %s %s %s %s",
             compilation->compiler,
             compilation->arch_options,
             compilation->compiler_options,
@@ -354,11 +354,11 @@ build_file(const Project* project, char* file_path, char* file_out_path)
             HasFlag(compilation->flags, DEBUG_INFO) ? compilation->debug_options : "",
             HasFlag(compilation->flags, OPTIMIZATION) ? compilation->optimization_options : "",
             compilation->bin_includes,
-            compilation->library,
-            compilation->icon,
             file_path,
             OUT_FLAG,
-            file_out_path
+            file_out_path,
+            compilation->library,
+            compilation->icon
             );
     
 	ExitIfError(error_state);
