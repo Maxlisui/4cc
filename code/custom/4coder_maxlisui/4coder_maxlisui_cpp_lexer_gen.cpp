@@ -225,10 +225,10 @@ build_language_model(void){
   sm_key("Int16T", "int16_t");
   sm_key("Int32T", "int32_t");
   sm_key("Int64T", "int64_t");
-  
-  sm_key("SizeT", "SizeT");
+
+  sm_key("SizeT", "size_t");
   sm_key("PtrDiffT", "PtrDiffT");
-  
+
   sm_key("S8");
   sm_key("S16");
   sm_key("S32");
@@ -238,7 +238,7 @@ build_language_model(void){
   sm_key("U16");
   sm_key("U32");
   sm_key("U64");
-  
+
   sm_key("F32");
   sm_key("F64");
 
