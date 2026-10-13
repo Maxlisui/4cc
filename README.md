@@ -20,11 +20,11 @@ By compiling the 4ed_build.cpp file in the root directory and running the result
  
 2. Compile
 
-        g++     4ed_build.cpp -Icode/custom  -Wno-write-strings    -o 4ed_build
+		g++ 4ed_build.cpp -Icode/custom -Wno-write-strings -std=c++11 -o 4ed_build
 
 	or (sadly it doesn't build with the circle compiler yet)
 
-		circle  4ed_build.cpp -Icode/custom --Wno-writable-strings -o 4ed_build
+		circle 4ed_build.cpp -Icode/custom --Wno-writable-strings -o 4ed_build
 
 	or
 
