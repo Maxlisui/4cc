@@ -19,7 +19,8 @@ CUSTOM_DOC("Responding to a startup event")
     for (i32 i = 0; i < file_names.count; i += 1){
       Temp_Memory_Block temp(scratch);
       String_Const_u8 input_name = file_names.vals[i];
-      String_Const_u8 full_name = push_u8_stringf(scratch, "%S/%S", hot_directory, input_name);
+      String_Const_u8 full_name = push_u8_stringf(scratch, "%.*s/%.*s",
+                                                  string_expand(hot_directory), string_expand(input_name));
       Buffer_ID new_buffer = create_buffer(app, full_name, BufferCreate_NeverNew|BufferCreate_MustAttachToFile);
       if (new_buffer == 0){
         new_buffer = create_buffer(app, input_name, 0);
@@ -275,7 +276,8 @@ BUFFER_HOOK_SIG(maxlisui_file_save){
 
     if (error_text.size > 0){
       print_message(app, error_text);
-      printf_message(app, scratch, "There appears to be a problem parsing %S; no theme change applied\n", path);
+      printf_message(app, scratch, "There appears to be a problem parsing %.*s; no theme change applied\n",
+                     string_expand(path));
     }
     else{
       print_message(app, string_u8_litexpr("Copied color theme\n"));
